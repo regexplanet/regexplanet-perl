@@ -170,8 +170,9 @@ my $app = sub {
 				$html .= "</td>";
 
 				$html .= "\t\t\t<td>";
-				my $replaced = $input =~ s/$regex/$replacement/r;
-				$html .= HTML::Entities::encode($replaced);
+				# this works locally, but not on dotCloud.  why????
+				#my $replaced = $input =~ s/$regex/$replacement/r;
+				#$html .= HTML::Entities::encode($replaced);
 				$html .= "</td>";
 
 				$html .= "\t\t</tr>";
