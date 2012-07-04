@@ -192,7 +192,7 @@ my $app = sub {
 				. "</table>\n";
 
 
-			$data = { "success" => JSON::true, "html" => '<div class="alert alert-warning">Actually, it is a lot less than beta: the real code isn\'t even written yet!</div>' . $html};
+			$data = { "success" => JSON::true, "html" => '<div class="alert alert-warning">Perl support is pretty raw.  If you are a Perl hacker, I could really use some help!  (<a href="http://www.regexplanet.com/support/api.html">instructions</a>, <a href="https://github.com/fileformat/regexplanet-perl">code on GitHub</a>)</div>' . $html};
 		}
 		my $body = to_json($data, {'utf8' => 1, 'pretty'=> 1});
 
