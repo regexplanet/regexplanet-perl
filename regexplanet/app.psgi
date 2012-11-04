@@ -14,6 +14,7 @@ my $app = sub {
 	}
 	elsif ($env->{PATH_INFO} eq '/status.json')
 	{
+		my $req = Plack::Request->new($env);
 		my $data;
 
 		$data = {
@@ -33,6 +34,11 @@ my $app = sub {
 			};
 
 		my $body = to_json($data, {'utf8' => 1, 'pretty'=> 0});
+		my $callback = $req->param('callback');
+		if (length($callback))
+		{
+			$body = $callback . "(" . $body . ")"
+		}
 
 		return [200,
 			['Content-Length' => length($body), 'Content-Type' => 'text/plain; charset=UTF8', 'Access-Control-Allow-Origin' => '*', 'Access-Control-Allow-Methods' => 'POST, GET', 'Access-Control-Max-Age' => '604800'],
